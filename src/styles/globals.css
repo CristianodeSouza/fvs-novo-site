@@ -1,0 +1,53 @@
+@import './design-tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-off-white text-preto-quente font-sans antialiased;
+}
+
+h1 {
+  @apply font-serif font-light leading-tight;
+  letter-spacing: var(--h1-letter-spacing);
+}
+
+h2 {
+  @apply font-serif font-normal leading-snug;
+}
+
+h3 {
+  @apply font-serif font-normal leading-relaxed;
+}
+
+p {
+  @apply font-light leading-relaxed;
+}
+
+/* Focus States */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-verde-serra;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+}

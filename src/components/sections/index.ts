@@ -1,0 +1,12 @@
+export { Hero } from './Hero'
+export { PropertyCard } from './PropertyCards'
+export { Footer } from './Footer'
+export { Gallery } from './Gallery'
+export { BeforeAfterSlider } from './BeforeAfterSlider'
+export { Map } from './Map'
+
+export type { HeroProps } from './Hero'
+export type { PropertyCardProps } from './PropertyCards'
+export type { GalleryProps, GalleryItem } from './Gallery'
+export type { BeforeAfterSliderProps } from './BeforeAfterSlider'
+export type { MapProps } from './Map'

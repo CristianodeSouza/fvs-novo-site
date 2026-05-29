@@ -1,0 +1,376 @@
+/**
+ * FVS NOVO SITE — Design Tokens
+ * Version: 1.0
+ * Date: 2026-05-29
+ *
+ * Source of Truth for all visual properties
+ * Used across website, Figma design system, and component libraries
+ *
+ * Brand Constraints (Non-Negotiable):
+ * - Colors extracted from FVS - Identidade Visual.pdf
+ * - Typography: Cormorant Garamond (serif) + Outfit (sans)
+ * - Spacing: 8px grid system
+ * - Transitions: 150-1000ms range only
+ */
+
+:root {
+  /* ==========================================================================
+     COLOR SYSTEM — Brand Palette
+     ========================================================================== */
+
+  /* Primary Brand Colors */
+  --color-verde-serra: #2B3A2C;      /* Dark green — Primary, backgrounds, navigation */
+  --color-pedra: #C2AE8F;             /* Warm stone beige — Buttons, highlights */
+  --color-cobre: #8C6A3F;             /* Copper/bronze — Accents, error states */
+  --color-off-white: #F4F0E8;         /* Warm off-white — Primary foreground */
+
+  /* Extended Color Palette */
+  --color-pedra-clara: #DDD0BB;       /* Lighter stone — Secondary backgrounds */
+  --color-nevoa: rgba(232, 221, 201, 0.18);  /* Subtle borders & dividers */
+  --color-preto-quente: #1A1A18;      /* Warm black — Body text, high contrast */
+  --color-bg-dark: #1a2420;           /* Dark variant for gradients */
+
+  /* Semantic Colors (Functional) */
+  --color-erro: #DC2626;              /* Error state — validation feedback */
+  --color-sucesso: #16A34A;           /* Success state — form confirmation */
+  --color-aviso: #EA8C55;             /* Warning state — attention needed */
+
+  /* Color Opacity Scale (for shadows & overlays) */
+  --color-verde-serra-20: rgba(43, 58, 44, 0.2);
+  --color-verde-serra-12: rgba(43, 58, 44, 0.12);
+  --color-verde-serra-08: rgba(43, 58, 44, 0.08);
+
+  /* ==========================================================================
+     TYPOGRAPHY — Font Family & Scale
+     ========================================================================== */
+
+  /* Font Families */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Heading 1 (Hero, Page Titles) */
+  --h1-font-size: 80px;
+  --h1-font-weight: 300;              /* Light */
+  --h1-font-family: var(--font-serif);
+  --h1-line-height: 1.2;
+  --h1-letter-spacing: 2px;
+
+  /* Heading 1 — Tablet Variant */
+  --h1-tablet-font-size: 64px;
+
+  /* Heading 1 — Mobile Variant */
+  --h1-mobile-font-size: 48px;
+
+  /* Heading 2 (Section Headings) */
+  --h2-font-size: 48px;
+  --h2-font-weight: 400;              /* Regular */
+  --h2-font-family: var(--font-serif);
+  --h2-line-height: 1.3;
+  --h2-letter-spacing: 0px;
+
+  /* Heading 2 — Tablet Variant */
+  --h2-tablet-font-size: 36px;
+
+  /* Heading 3 (Card Titles, Highlights) */
+  --h3-font-size: 28px;
+  --h3-font-weight: 300;              /* Light */
+  --h3-font-family: var(--font-serif);
+  --h3-line-height: 1.4;
+  --h3-font-style: italic;
+  --h3-letter-spacing: 0px;
+
+  /* Heading 3 — Smaller Variant */
+  --h3-sm-font-size: 24px;
+
+  /* Body Text (Paragraphs, Descriptions) */
+  --body-font-size: 16px;
+  --body-font-weight: 300;            /* Light */
+  --body-font-family: var(--font-sans);
+  --body-line-height: 1.75;
+  --body-letter-spacing: 0px;
+
+  /* Body Text — Secondary (Smaller) */
+  --body-sm-font-size: 14px;
+  --body-sm-font-weight: 300;
+  --body-sm-line-height: 1.6;
+
+  /* Label (UI Labels, Tags, CTA Text) */
+  --label-font-size: 13px;
+  --label-font-weight: 500;           /* Medium */
+  --label-font-family: var(--font-sans);
+  --label-text-transform: uppercase;
+  --label-letter-spacing: 0.5px;
+  --label-line-height: 1.5;
+
+  /* Label — Extra Light Variant (Metadata) */
+  --label-extralight-font-size: 11px;
+  --label-extralight-font-weight: 200;
+  --label-extralight-letter-spacing: 1px;
+
+  /* ==========================================================================
+     SPACING — 8px Grid System
+     ========================================================================== */
+
+  --spacing-xs: 8px;                  /* Micro spacing (gap between elements) */
+  --spacing-sm: 16px;                 /* Small (component padding) */
+  --spacing-md: 24px;                 /* Medium (section padding) */
+  --spacing-lg: 40px;                 /* Large (section gap) */
+  --spacing-xl: 64px;                 /* Extra large (major sections) */
+  --spacing-2xl: 80px;                /* 2x Extra large (hero, footer) */
+
+  /* Common Component Spacings */
+  --padding-button: 12px 16px;        /* Button internal spacing */
+  --padding-input: 12px 14px;         /* Form field padding */
+  --padding-card: 24px;               /* Card internal padding */
+  --padding-section: 48px 24px;       /* Section padding (responsive ready) */
+
+  /* ==========================================================================
+     TRANSITIONS & ANIMATIONS — Timing Scale
+     ========================================================================== */
+
+  /* Transition Durations */
+  --transition-fast: 150ms;           /* Micro-interactions (hover, focus) */
+  --transition-base: 300ms;           /* Button clicks, standard fade-ins */
+  --transition-slow: 600ms;           /* Page transitions, scroll reveals */
+  --transition-cine: 1000ms;          /* Epic animations (hero entrance, sliders) */
+
+  /* Easing Functions */
+  --easing-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* Common Transition Shortcuts */
+  --transition-color: color var(--transition-fast) var(--easing-ease-in-out);
+  --transition-background: background-color var(--transition-fast) var(--easing-ease-in-out);
+  --transition-shadow: box-shadow var(--transition-fast) var(--easing-ease-out);
+  --transition-all: all var(--transition-base) var(--easing-out);
+
+  /* ==========================================================================
+     SHADOWS — Depth & Elevation
+     ========================================================================== */
+
+  /* Shadow Scale */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px var(--color-verde-serra-08);  /* Verde Serra at 8% */
+  --shadow-xl: 0 20px 40px var(--color-verde-serra-12);  /* Verde Serra at 12% */
+
+  /* Hover State Shadows */
+  --shadow-card-hover: 0 8px 24px var(--color-verde-serra-12);
+  --shadow-button-hover: 0 4px 12px var(--color-verde-serra-15);
+
+  /* ==========================================================================
+     BORDER RADIUS — Roundedness Scale
+     ========================================================================== */
+
+  --radius-sm: 4px;                   /* Minimal rounding (form focus) */
+  --radius-md: 8px;                   /* Standard rounding */
+  --radius-lg: 16px;                  /* Large rounding */
+  --radius-full: 9999px;              /* Full circle (pills, circular buttons) */
+
+  /* Component-specific Radius */
+  --radius-button: 0px;               /* Buttons — sharp corners (FVS elegance) */
+  --radius-card: 0px;                 /* Cards — sharp corners */
+  --radius-input: 0px;                /* Form fields — sharp corners */
+  --radius-badge: 0px;                /* Badge overlay — sharp corners */
+
+  /* ==========================================================================
+     Z-INDEX SCALE — Layering
+     ========================================================================== */
+
+  --z-base: 1;                        /* Default stacking context */
+  --z-dropdown: 10;                   /* Dropdowns, floating panels */
+  --z-sticky: 20;                     /* Sticky navigation bar */
+  --z-fixed: 30;                      /* Fixed elements (chat, notifications) */
+  --z-modal: 50;                      /* Modal backdrops, lightboxes */
+
+  /* ==========================================================================
+     BORDER SYSTEM
+     ========================================================================== */
+
+  --border-width: 1px;
+  --border-width-focus: 2px;
+  --border-color-default: var(--color-nevoa);
+  --border-color-focus: var(--color-verde-serra);
+  --border-color-error: var(--color-cobre);
+
+  /* ==========================================================================
+     COMPONENT-SPECIFIC TOKENS
+     ========================================================================== */
+
+  /* Hero Section */
+  --hero-height: 100vh;
+  --hero-bg: var(--color-verde-serra);
+  --hero-text-color: var(--color-off-white);
+  --hero-accent-color: var(--color-pedra);
+
+  /* Button — Primary */
+  --btn-primary-bg: var(--color-pedra);
+  --btn-primary-text: var(--color-preto-quente);
+  --btn-primary-hover-bg: var(--color-cobre);
+  --btn-primary-active-bg: var(--color-verde-serra);
+  --btn-primary-min-height: 44px;
+
+  /* Button — Secondary */
+  --btn-secondary-border: 2px solid var(--color-verde-serra);
+  --btn-secondary-text: var(--color-verde-serra);
+  --btn-secondary-hover-bg: rgba(43, 58, 44, 0.08);
+  --btn-secondary-min-height: 44px;
+
+  /* Button — Tertiary */
+  --btn-tertiary-text: var(--color-cobre);
+  --btn-tertiary-hover-text: var(--color-verde-serra);
+  --btn-tertiary-underline: var(--color-pedra);
+
+  /* Form Inputs */
+  --input-bg: var(--color-off-white);
+  --input-border: 1px solid var(--color-nevoa);
+  --input-text: var(--color-preto-quente);
+  --input-placeholder: var(--color-pedra);
+  --input-focus-border: 2px solid var(--color-verde-serra);
+  --input-focus-bg: #FAFAF8;
+  --input-error-border: 2px solid var(--color-cobre);
+  --input-min-height: 44px;
+
+  /* Navigation Bar */
+  --nav-height: 64px;
+  --nav-bg: var(--color-off-white);
+  --nav-text: var(--color-preto-quente);
+  --nav-hover-color: var(--color-cobre);
+  --nav-separator: var(--color-cobre);
+
+  /* Property Card */
+  --card-bg: var(--color-off-white);
+  --card-border: 1px solid var(--color-nevoa);
+  --card-text-primary: var(--color-preto-quente);
+  --card-text-secondary: var(--color-pedra);
+  --card-hover-shadow: var(--shadow-card-hover);
+
+  /* Footer */
+  --footer-bg: var(--color-verde-serra);
+  --footer-text: var(--color-off-white);
+  --footer-link: var(--color-pedra);
+  --footer-link-hover: var(--color-off-white);
+
+  /* ==========================================================================
+     RESPONSIVE BREAKPOINTS
+     ========================================================================== */
+
+  /* Mobile-first breakpoint values (use in @media queries) */
+  /* 375px — Mobile small (iPhone SE) */
+  /* 768px — Tablet */
+  /* 1024px — Desktop small */
+  /* 1440px — Desktop large (cinema) */
+
+  /* ==========================================================================
+     ACCESSIBILITY
+     ========================================================================== */
+
+  /* Focus State */
+  --focus-outline: 2px solid var(--color-verde-serra);
+  --focus-outline-offset: 2px;
+
+  /* High Contrast Mode */
+  @media (prefers-contrast: more) {
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+    --transition-cine: 0ms;
+  }
+}
+
+/**
+ * UTILITY CLASSES — Optional helpers for component building
+ * (Extend Tailwind config with these tokens)
+ */
+
+/* Typography Scale Utilities */
+.h1 {
+  font-family: var(--font-serif);
+  font-size: var(--h1-font-size);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-size: var(--h2-font-size);
+  font-weight: var(--h2-font-weight);
+  line-height: var(--h2-line-height);
+}
+
+.h3 {
+  font-family: var(--font-serif);
+  font-size: var(--h3-font-size);
+  font-weight: var(--h3-font-weight);
+  line-height: var(--h3-line-height);
+  font-style: var(--h3-font-style);
+}
+
+.body {
+  font-family: var(--font-sans);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+}
+
+.body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--body-sm-font-size);
+  font-weight: var(--body-sm-font-weight);
+  line-height: var(--body-sm-line-height);
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  text-transform: var(--label-text-transform);
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+}
+
+.label-sm {
+  font-family: var(--font-sans);
+  font-size: var(--label-extralight-font-size);
+  font-weight: var(--label-extralight-font-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--label-extralight-letter-spacing);
+}
+
+/* Color Utilities */
+.text-verde-serra { color: var(--color-verde-serra); }
+.text-pedra { color: var(--color-pedra); }
+.text-cobre { color: var(--color-cobre); }
+.text-preto-quente { color: var(--color-preto-quente); }
+
+.bg-verde-serra { background-color: var(--color-verde-serra); }
+.bg-pedra { background-color: var(--color-pedra); }
+.bg-off-white { background-color: var(--color-off-white); }
+.bg-pedra-clara { background-color: var(--color-pedra-clara); }
+
+/* Shadow Utilities */
+.shadow-card { box-shadow: var(--shadow-lg); }
+.shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+
+/* Focus States */
+.focus-verde-serra:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Transition Utilities */
+.transition-color { transition: var(--transition-color); }
+.transition-bg { transition: var(--transition-background); }
+.transition-shadow { transition: var(--transition-shadow); }
+.transition-all { transition: var(--transition-all); }
+
+/* End of design-tokens.css */

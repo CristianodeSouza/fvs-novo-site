@@ -10,8 +10,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Brand Essence:** "A FVS não vende imóveis. A FVS constrói percepção de valor sobre viver, investir e permanecer em Gramado."
 
-**Current Phase:** Phase 1 ✅ Complete — Design Architecture Documentation  
-**Next Phase:** Phase 2 — Design Tokens & High-Fidelity Prototypes
+**Current Phase:** Phase 2 ✅ Complete — Design Tokens & High-Fidelity Prototypes  
+**Next Phase:** Phase 3 — UI Components & Build Setup
 
 ---
 
@@ -80,21 +80,83 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-## ⏳ Getting Started for Phase 2
+## ✅ Phase 2 Deliverables (Complete)
 
-**When Phase 2 begins:**
+### Generated Files
 
-1. **Invoke design-squad:design-system-architect**
-   - Input: Read DESIGN_SYSTEM_INTEGRATED.md sections (5 components)
-   - Input: Reference DESIGN_ARCHITECTURE.md for color/typography specs
-   - Output: design-tokens.css, design-tokens.json, Figma file
+1. **design-tokens.css** — 114 production-ready CSS custom properties
+   - Colors: 14 tokens (brand palette + semantic colors)
+   - Typography: 18 tokens (font families, sizes, weights, line-heights)
+   - Spacing: 10 tokens (8px grid scale: xs to 2xl)
+   - Transitions: 8 tokens (timing scale: 150ms to 1000ms + easing functions)
+   - Shadows: 6 tokens (Verde Serra coloring, no pure black)
+   - Border Radius: 7 tokens (4px to 9999px)
+   - Z-Index: 5 tokens (1 to 50 hierarchy)
+   - Component-specific: 26 tokens (button states, card, inputs, nav)
+   - Accessibility: 4 tokens + media queries (prefers-contrast, prefers-reduced-motion)
 
-2. **After design tokens are approved:**
-   - Repository structure becomes: `src/components/`, `src/pages/`, `tailwind.config.js`
-   - This CLAUDE.md will be updated with build/lint/test commands
-   - Check back after Phase 2 for updated instructions
+2. **DESIGN_TOKENS_DOCUMENTATION.md** — Complete usage guide
+   - Token naming conventions explained
+   - DO/DON'T examples per category
+   - WCAG AA contrast validation
+   - Tailwind configuration patterns
+   - Token justification (why each exists)
 
-**Note:** This section will be updated when Phase 2 deliverables arrive.
+3. **FIGMA_ARCHITECTURE.md** — Design system specifications
+   - 5 core components (Hero, Cards, Nav, Buttons, Forms)
+   - 3 responsive variants each (desktop/tablet/mobile)
+   - All interaction states (default/hover/active/disabled/focus/error)
+   - Layer structure and naming conventions
+   - 4 additional components (Footer, Gallery, Before-After Slider, Map)
+
+4. **PHASE_2_BRIEF.md** — Phase 2 execution specification
+   - Complete token definitions with exact hex values
+   - Component architecture requirements
+   - Quality checklist (114 tokens validated against DESIGN_ARCHITECTURE.md)
+
+## ⏳ Getting Started for Phase 3
+
+**When Phase 3 begins:**
+
+1. **Project Setup**
+   ```bash
+   npm init -y
+   npm install next react react-dom tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   mkdir -p src/components src/pages src/styles
+   ```
+
+2. **Tailwind Configuration (tailwind.config.js)**
+   - Import design tokens from `design-tokens.css`
+   - Configure theme colors, fonts, spacing using CSS variables
+   - Define responsive breakpoints (375px, 768px, 1024px, 1440px)
+   - Example:
+   ```js
+   module.exports = {
+     theme: {
+       colors: {
+         'verde-serra': 'var(--color-verde-serra)',
+         'pedra': 'var(--color-pedra)',
+         // ... import all 14 color tokens
+       },
+       fontFamily: {
+         serif: 'var(--font-serif)',
+         sans: 'var(--font-sans)',
+       },
+       spacing: {
+         xs: 'var(--spacing-xs)',
+         sm: 'var(--spacing-sm)',
+         // ... import all spacing tokens
+       },
+     }
+   }
+   ```
+
+3. **Invoke design-squad:ui-engineer**
+   - Input: design-tokens.css (for Tailwind config)
+   - Input: FIGMA_ARCHITECTURE.md (for pixel-perfect specs)
+   - Input: COMPONENTS_SPECIFICATION.md (for implementation details)
+   - Output: Next.js components (9 total: Hero, Cards, Nav, Buttons, Forms, Footer, Gallery, Before-After, Map)
 
 ---
 
@@ -122,44 +184,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Phase 3: UI Components & Build Setup (Days 4-8)
 
-**When to invoke:** After design tokens are approved  
+**When to invoke:** After Phase 2 deliverables are complete  
 **Agent:** `design-squad:ui-engineer`
 
-```bash
-# Setup commands (not yet implemented):
-# npm init -y
-# npm install next react react-dom tailwindcss postcss autoprefixer
-# npx tailwindcss init -p
-# mkdir -p src/components src/pages src/styles
-
-# Component build (reference COMPONENTS_SPECIFICATION.md):
-# - Hero Section (01)
-# - Property Cards (02)
-# - Navigation (03)
-# - Buttons (04)
-# - Forms (05)
-# - Footer (06)
-# - Image Gallery (07)
-# - Before-After Slider (08)
-# - Map Embed (09)
-```
+**Reference Files:**
+- `design-tokens.css` — Token definitions
+- `DESIGN_TOKENS_DOCUMENTATION.md` — Token usage patterns
+- `FIGMA_ARCHITECTURE.md` — Component specifications (5 core + 4 additional)
+- `COMPONENTS_SPECIFICATION.md` — Detailed implementation specs (YAML format)
+- `DESIGN_SYSTEM_INTEGRATED.md` — Integration rules and responsive patterns
 
 **Tech Stack:**
 - Framework: Next.js 14+ (React 18+)
-- Styling: Tailwind CSS with custom design tokens
+- Styling: Tailwind CSS with custom design tokens from `design-tokens.css`
 - Icons: Heroicons or Lucide (no emoji icons)
-- Image Optimization: Next.js Image + WebP + srcset
+- Image Optimization: Next.js Image + WebP + srcset (375w, 768w, 1024w, 1440w)
 
-**Validation Before Merge:**
-- [ ] All colors from DESIGN_ARCHITECTURE.md checklist
-- [ ] Typography matches Cormorant + Outfit specs
-- [ ] Responsive at 375px, 768px, 1024px, 1440px
-- [ ] Touch targets 44x44px minimum
-- [ ] Transitions in 150-1000ms range (no custom values)
-- [ ] axe-core accessibility audit clean
-- [ ] Lighthouse score 90+ (performance, accessibility, SEO)
-- [ ] No horizontal scroll on mobile
-- [ ] Images lazy loaded with srcset
+**Component Build Order (9 total):**
+1. **Button** (04) — Primary, Secondary, Tertiary variants with all states
+2. **Form Inputs** (05) — Input, Textarea, Select with validation states
+3. **Navigation Bar** (03) — Sticky header with mobile drawer
+4. **Hero Section** (01) — Parallax background, entrance animations, scroll indicator
+5. **Property Cards** (02) — Grid layout, Before-After slider, hover states
+6. **Footer** (06) — Multi-column responsive, newsletter signup
+7. **Image Gallery** (07) — Lightbox, lazy loading, responsive srcset
+8. **Before-After Slider** (08) — Interactive comparison, smooth drag/click
+9. **Map Embed** (09) — Google Maps integration, marker, proximity info
+
+**Validation Checklist Before Merge:**
+- [ ] Tailwind config imports all 114 tokens from design-tokens.css
+- [ ] All colors verified against DESIGN_ARCHITECTURE.md (Verde Serra, Pedra, Cobre, Off-White)
+- [ ] Typography uses Cormorant Garamond (H1-H3, serif) + Outfit (UI/labels, sans)
+- [ ] Responsive at all breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop), 1440px (large)
+- [ ] Touch targets 44x44px minimum (buttons, form inputs, interactive elements)
+- [ ] All transitions use token scale (150ms, 300ms, 600ms, 1000ms — NO custom values)
+- [ ] Images lazy loaded with `loading="lazy"` and proper srcset
+- [ ] Before-After slider smooth 60fps (use transform/opacity, not width/height)
+- [ ] axe-core accessibility audit clean (WCAG AA, 4.5:1 contrast minimum)
+- [ ] Lighthouse score 90+ (performance, accessibility, SEO, best practices)
+- [ ] No horizontal scroll at any viewport width
+- [ ] All focus states visible for keyboard navigation
+- [ ] Component states match FIGMA_ARCHITECTURE.md (default/hover/active/disabled/focus/error)
 
 ### Phase 4: Content & Copywriting (Days 9-10)
 
@@ -258,14 +323,70 @@ When building ANY component, verify against these docs in order:
 
 ## 🔍 Common Development Patterns
 
+### Importing Design Tokens into Tailwind
+
+**In tailwind.config.js:**
+```js
+import defaultTheme from 'tailwindcss/defaultTheme'
+
+export default {
+  theme: {
+    extend: {
+      colors: {
+        'verde-serra': 'var(--color-verde-serra)',
+        'pedra': 'var(--color-pedra)',
+        'cobre': 'var(--color-cobre)',
+        'off-white': 'var(--color-off-white)',
+        'nevoa': 'var(--color-nevoa)',
+        'erro': 'var(--color-erro)',
+        'sucesso': 'var(--color-sucesso)',
+      },
+      fontFamily: {
+        serif: ['var(--font-serif)', ...defaultTheme.fontFamily.serif],
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
+      spacing: {
+        xs: 'var(--spacing-xs)',
+        sm: 'var(--spacing-sm)',
+        md: 'var(--spacing-md)',
+        lg: 'var(--spacing-lg)',
+        xl: 'var(--spacing-xl)',
+        '2xl': 'var(--spacing-2xl)',
+      },
+      transitionDuration: {
+        'fast': 'var(--transition-fast)',
+        'base': 'var(--transition-base)',
+        'slow': 'var(--transition-slow)',
+        'cine': 'var(--transition-cine)',
+      },
+    }
+  }
+}
+```
+
+**In CSS/component files:**
+```jsx
+// Use Tailwind classes directly
+<div className="bg-verde-serra text-off-white p-lg hover:shadow-lg transition-colors duration-base">
+  {content}
+</div>
+
+// Or use CSS variables for complex selectors
+<style>{`
+  .custom-gradient {
+    background: linear-gradient(135deg, var(--color-verde-serra), var(--color-bg-dark));
+  }
+`}</style>
+```
+
 ### Color Usage
 ```css
-/* DO use design tokens from DESIGN_ARCHITECTURE */
+/* DO use design tokens from design-tokens.css */
 background-color: var(--color-verde-serra);  /* #2B3A2C */
 color: var(--color-off-white);               /* #F4F0E8 */
 border: 1px solid var(--color-nevoa);        /* rgba(232, 221, 201, 0.18) */
 
-/* DON'T invent colors, use ui-ux-pro-max suggestions, or generic grays */
+/* DON'T invent colors, use ui-ux-pro-max suggestions, or generic grays/blacks */
 ```
 
 ### Typography
@@ -346,14 +467,17 @@ transition: color var(--t-base) cubic-bezier(0.22, 1, 0.36, 1);
 
 ---
 
-## 📞 Contact & Escalation
+## 📞 Reference by Task
 
-If you need to:
-- **Clarify brand guidelines** → Read FVS - Identidade Visual.pdf
-- **Check functional requirements** → Read PRD_MAPPING.md or NOVO_SITE_FVS_PRD_COMPLETO.docx
-- **Understand component specs** → Read COMPONENTS_SPECIFICATION.md
-- **Get design tokens** → Wait for Phase 2 deliverables (design-squad:design-system-architect)
-- **Build components** → Follow Phase 3 workflow (design-squad:ui-engineer)
+When you need to:
+- **Clarify brand guidelines** → Read FVS - Identidade Visual.pdf (colors, typography, logo, tone)
+- **Check functional requirements** → Read PRD_MAPPING.md or NOVO_SITE_FVS_PRD_COMPLETO.docx (pages, flows, integrations)
+- **Understand component specifications** → Read COMPONENTS_SPECIFICATION.md (YAML specs 01-09)
+- **See design token definitions** → Read design-tokens.css (single source of truth)
+- **Learn token usage patterns** → Read DESIGN_TOKENS_DOCUMENTATION.md (DO/DON'T examples, contrasts)
+- **View Figma architecture** → Read FIGMA_ARCHITECTURE.md (component variants, states, responsive)
+- **Understand reference patterns** → Read REFERENCE_ANALYSIS.md (LUMEN + Lunchlab adaptations)
+- **Build React components** → Follow Phase 3 workflow with design-squad:ui-engineer
 
 ---
 
@@ -370,6 +494,13 @@ By Phase 6 completion, the site will have:
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** 2026-05-29  
+**Document Version:** 1.1  
+**Last Updated:** 2026-05-29 (Phase 2 Complete)  
+**Previous Version:** 1.0 (Phase 1 Complete, May 29)  
 **Confidential — FVS Incorporações**
+
+---
+
+### Version History
+- **1.1** — Updated for Phase 2 completion. Added Phase 2 deliverables section, updated Phase 3 instructions with design token import patterns, improved component build checklist.
+- **1.0** — Initial document for Phase 1 completion.
