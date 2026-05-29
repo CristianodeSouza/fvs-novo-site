@@ -80,6 +80,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## ⏳ Getting Started for Phase 2
+
+**When Phase 2 begins:**
+
+1. **Invoke design-squad:design-system-architect**
+   - Input: Read DESIGN_SYSTEM_INTEGRATED.md sections (5 components)
+   - Input: Reference DESIGN_ARCHITECTURE.md for color/typography specs
+   - Output: design-tokens.css, design-tokens.json, Figma file
+
+2. **After design tokens are approved:**
+   - Repository structure becomes: `src/components/`, `src/pages/`, `tailwind.config.js`
+   - This CLAUDE.md will be updated with build/lint/test commands
+   - Check back after Phase 2 for updated instructions
+
+**Note:** This section will be updated when Phase 2 deliverables arrive.
+
+---
+
 ## 🔧 Workflow by Phase
 
 ### Phase 2: Design Tokens & High-Fidelity (Days 1-3)
@@ -192,6 +210,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [ ] Sitemap.xml generated
 - [ ] robots.txt configured
 - [ ] SSL certificate active
+
+---
+
+## 🤖 Skills & Design Agents Referenced
+
+This project uses specialized agents for design execution:
+
+- **ui-ux-pro-max** — Design system recommendations (used in Phase 1 for color/typography guidance)
+- **design-squad:design-system-architect** — Generates design tokens and Figma prototypes (Phase 2)
+- **design-squad:ui-engineer** — Builds React/Next.js components from specs (Phase 3)
+
+Note: These are referenced in IMPLEMENTATION_ROADMAP.md. Invoke them when their respective phases begin.
 
 ---
 
