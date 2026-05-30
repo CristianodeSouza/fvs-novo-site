@@ -1,785 +1,298 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FVS Incorporações - Novo Layout Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --verde-serra: #2B3A2C;
-            --pedra: #C2AE8F;
-            --cobre: #8C6A3F;
-            --off-white: #F4F0E8;
-            --pedra-clara: #DDD0BB;
-            --preto-quente: #1A1A18;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Outfit', sans-serif;
-            --easing: cubic-bezier(0.25, 0.74, 0.22, 0.99);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            color: var(--preto-quente);
-            background: var(--off-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ===== NAVBAR ===== */
-        nav {
-            background: var(--off-white);
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(43,58,44,0.08);
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            font-weight: 400;
-            color: var(--verde-serra);
-            border-right: 3px solid var(--cobre);
-            padding-right: 20px;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .nav-links a {
-            color: var(--preto-quente);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s var(--easing);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -5px;
-            left: 0;
-            background: var(--pedra);
-            transition: width 0.3s var(--easing);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-nav {
-            padding: 12px 28px;
-            background: var(--pedra);
-            color: var(--preto-quente);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 0;
-            transition: all 0.3s var(--easing);
-            border: none;
-            cursor: pointer;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .cta-nav:hover {
-            background: var(--cobre);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(43,58,44,0.15);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            margin-top: 64px;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--verde-serra) 0%, #1a3d2a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--off-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1512656371341-6a55d668eaf3?w=1440&q=85');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            animation: fadeInDown 0.9s var(--easing) forwards;
-        }
-
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -1.5px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            font-weight: 300;
-            margin-bottom: 48px;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        /* ===== BEFORE-AFTER ===== */
-        .before-after {
-            padding: 120px 40px;
-            background: linear-gradient(135deg, var(--off-white) 0%, var(--pedra-clara) 100%);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .ba-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .ba-content h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 400;
-            color: var(--verde-serra);
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-
-        .ba-content p {
-            font-size: 16px;
-            color: var(--preto-quente);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 520px;
-        }
-
-        .slider-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 0;
-            box-shadow: 0 12px 40px rgba(43,58,44,0.15);
-            cursor: col-resize;
-            user-select: none;
-        }
-
-        .slider-before {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .slider-before img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slider-after {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            z-index: 2;
-            transition: width 0.05s linear;
-        }
-
-        .slider-after img {
-            width: 200%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 70px;
-            height: 100%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, rgba(194,174,143,0.25) 0%, rgba(194,174,143,0.6) 50%, rgba(194,174,143,0.25) 100%);
-            z-index: 30;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: width 0.2s var(--easing);
-        }
-
-        .slider-handle:hover {
-            width: 90px;
-            background: linear-gradient(90deg, rgba(194,174,143,0.3) 0%, rgba(194,174,143,0.7) 50%, rgba(194,174,143,0.3) 100%);
-        }
-
-        .slider-arrows {
-            display: flex;
-            gap: 6px;
-            color: var(--off-white);
-            font-size: 20px;
-        }
-
-        .slider-label {
-            position: absolute;
-            bottom: 24px;
-            padding: 10px 18px;
-            font-family: var(--font-sans);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--off-white);
-            background: rgba(43,58,44,0.65);
-            backdrop-filter: blur(8px);
-            z-index: 10;
-        }
-
-        .label-before {
-            left: 20px;
-        }
-
-        .label-after {
-            right: 20px;
-        }
-
-        /* ===== HOW IT WORKS ===== */
-        .how-it-works {
-            padding: 120px 40px;
-            background: var(--off-white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 100px;
-        }
-
-        .section-header h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 400;
-            color: var(--verde-serra);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .section-header p {
-            font-size: 16px;
-            color: var(--preto-quente);
-            max-width: 680px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
-        }
-
-        .step-card {
-            text-align: center;
-            animation: slideUp 0.8s var(--easing) forwards;
-            opacity: 0;
-        }
-
-        .step-card:nth-child(1) { animation-delay: 0.1s; }
-        .step-card:nth-child(2) { animation-delay: 0.2s; }
-        .step-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .step-icon {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 32px;
-            border: 2px solid var(--pedra);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            position: relative;
-            transition: all 0.4s var(--easing);
-            background: rgba(194,174,143,0.05);
-        }
-
-        .step-card:hover .step-icon {
-            transform: scale(1.15);
-            border-color: var(--cobre);
-            box-shadow: 0 12px 32px rgba(43,58,44,0.12);
-            background: rgba(194,174,143,0.1);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            width: 40px;
-            height: 40px;
-            background: var(--verde-serra);
-            color: var(--off-white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 16px;
-            border: 2px solid var(--off-white);
-        }
-
-        .step-card h3 {
-            font-family: var(--font-serif);
-            font-size: 26px;
-            font-weight: 400;
-            color: var(--verde-serra);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .step-card p {
-            font-size: 14px;
-            color: var(--preto-quente);
-            line-height: 1.7;
-        }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials {
-            padding: 120px 40px;
-            background: linear-gradient(180deg, var(--off-white) 0%, rgba(221,208,187,0.3) 100%);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 32px;
-            margin: 80px 0 60px;
-        }
-
-        .testimonial-card {
-            padding: 40px;
-            background: var(--off-white);
-            border-top: 3px solid var(--verde-serra);
-            border-radius: 0;
-            transition: all 0.4s var(--easing);
-            box-shadow: 0 4px 12px rgba(43,58,44,0.06);
-        }
-
-        .testimonial-card:hover {
-            box-shadow: 0 16px 40px rgba(43,58,44,0.12);
-            transform: translateY(-4px);
-        }
-
-        .testimonial-quote {
-            font-family: var(--font-serif);
-            font-size: 22px;
-            font-weight: 300;
-            color: var(--verde-serra);
-            margin-bottom: 24px;
-            line-height: 1.7;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--preto-quente);
-            margin-bottom: 4px;
-        }
-
-        .testimonial-location {
-            font-size: 12px;
-            color: var(--pedra);
-            letter-spacing: 0.3px;
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 80px;
-        }
-
-        .cta-primary, .cta-secondary {
-            padding: 14px 40px;
-            font-family: var(--font-sans);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            border-radius: 0;
-            transition: all 0.3s var(--easing);
-            border: none;
-            cursor: pointer;
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cta-primary {
-            background: var(--pedra);
-            color: var(--preto-quente);
-        }
-
-        .cta-primary:hover {
-            background: var(--cobre);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(43,58,44,0.15);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            border: 2px solid var(--verde-serra);
-            color: var(--verde-serra);
-        }
-
-        .cta-secondary:hover {
-            border-color: var(--cobre);
-            color: var(--cobre);
-            background: rgba(43,58,44,0.05);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--verde-serra);
-            color: var(--off-white);
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        footer h3 {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
-
-        footer p {
-            font-size: 14px;
-            line-height: 1.8;
-            opacity: 0.9;
-        }
-
-        .footer-bottom {
-            margin-top: 32px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(244,240,232,0.2);
-            font-size: 12px;
-            opacity: 0.7;
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            nav {
-                padding: 12px 20px;
-            }
-
-            .logo {
-                font-size: 20px;
-                padding-right: 12px;
-                border-right: 2px solid var(--cobre);
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                margin-top: 52px;
-                height: auto;
-                padding: 80px 20px;
-            }
-
-            .ba-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-
-            .slider-wrapper {
-                aspect-ratio: 4 / 3;
-            }
-
-            .before-after,
-            .how-it-works,
-            .testimonials {
-                padding: 60px 20px;
-            }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .section-header {
-                margin-bottom: 60px;
-            }
-
-            .section-header h2 {
-                font-size: 32px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .cta-primary, .cta-secondary {
-                width: 100%;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FVS Incorporações | Viver em Gramado</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--verde:#2B3A2C;--pedra:#C2AE8F;--cobre:#8C6A3F;--branco:#F4F0E8;--pedra-clara:#DDD0BB;--preto:#1A1A18;--serif:'Cormorant Garamond',serif;--sans:'Outfit',sans-serif;--ease:cubic-bezier(0.25,0.74,0.22,0.99)}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--verde);color:var(--branco);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 40px}
+.nav-left{display:flex;align-items:center;gap:40px}
+.nav-menu{display:flex;align-items:center;gap:10px;cursor:pointer}
+.hamburger{display:flex;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--branco)}
+.nav-txt{font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--branco)}
+.nav-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,240,232,0.7);text-decoration:none;transition:color 0.3s}
+.nav-link:hover{color:var(--branco)}
+.nav-logo{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:26px;font-weight:400;color:var(--branco);letter-spacing:1px}
+.nav-right{display:flex;align-items:center;gap:30px}
+.nav-heart{font-size:18px;color:rgba(244,240,232,0.7);cursor:pointer}
+.hero{position:relative;height:100vh;overflow:hidden;background:var(--verde)}
+.hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:35% 40% 25%;grid-template-rows:55% 45%;gap:3px;opacity:0.6}
+.hero-mosaic img{width:100%;height:100%;object-fit:cover}
+.hero-mosaic .tall{grid-row:span 2}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(27,36,28,0.8) 0%,rgba(20,45,30,0.55) 60%,rgba(30,60,40,0.4) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:120px 60px 80px}
+.hero-badge{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:0.65;margin-bottom:16px}
+.hero-desc{font-size:14px;font-weight:300;line-height:1.8;max-width:280px;opacity:0.85}
+.hero-h1{font-family:var(--serif);font-size:clamp(70px,9vw,130px);font-weight:300;line-height:0.92;color:var(--pedra);text-align:right;letter-spacing:-1px;max-width:65%}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.hero-scroll{width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,240,232,0.35);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.3s var(--ease)}
+.hero-scroll:hover{border-color:var(--pedra)}
+.hero-scroll svg{width:14px;height:14px;stroke:var(--branco);fill:none;stroke-width:1.5}
+.section-half{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.half-dark{background:var(--verde);padding:100px 60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.half-img{position:relative;overflow:hidden}
+.half-img img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:transform 1.2s var(--ease)}
+.half-img:hover img{transform:scale(1.04)}
+.bg-word{position:absolute;bottom:-10px;left:-15px;font-family:var(--serif);font-size:clamp(80px,13vw,180px);font-weight:300;line-height:0.9;color:rgba(244,240,232,0.045);pointer-events:none;white-space:nowrap;letter-spacing:-3px}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--pedra);margin-bottom:20px}
+.sec-h2{font-family:var(--serif);font-size:clamp(44px,5.5vw,80px);font-weight:300;line-height:1.05;color:var(--branco);margin-bottom:28px}
+.sec-p{font-size:14px;font-weight:300;line-height:1.85;color:rgba(244,240,232,0.75);max-width:460px;margin-bottom:32px}
+.tabs{display:flex;gap:6px;margin-bottom:44px;flex-wrap:wrap}
+.tab{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;cursor:pointer;border:1px solid rgba(244,240,232,0.18);color:rgba(244,240,232,0.45);background:transparent;font-family:var(--sans);transition:all 0.8s var(--ease)}
+.tab.on{background:rgba(244,240,232,0.07);border-color:rgba(244,240,232,0.4);color:var(--branco)}
+.tab:hover{color:var(--branco);border-color:rgba(244,240,232,0.3)}
+.tab-pane{display:none;animation:upIn 0.5s var(--ease) forwards}
+.tab-pane.on{display:block}
+.sec-full{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center}
+.full-img{position:absolute;left:0;top:0;width:50%;height:100%;object-fit:cover;opacity:0.6}
+.full-bg{position:absolute;bottom:-30px;left:0;font-family:var(--serif);font-size:clamp(120px,18vw,240px);font-weight:300;line-height:0.85;color:rgba(244,240,232,0.04);letter-spacing:-6px;pointer-events:none}
+.full-content{position:relative;z-index:2;padding:80px 60px;margin-left:50%;width:50%}
+.arrows{display:flex;gap:10px;margin-top:40px}
+.arr{width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,240,232,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;color:var(--branco);font-size:15px;transition:all 0.3s var(--ease)}
+.arr:hover{border-color:var(--pedra);background:rgba(194,174,143,0.08)}
+.stats{display:flex;gap:50px;margin:50px 0;flex-wrap:wrap}
+.stat-n{font-family:var(--serif);font-size:68px;font-weight:300;color:var(--pedra);line-height:1;display:block;margin-bottom:8px}
+.stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.55;line-height:1.5}
+.sec-res{background:var(--verde);padding:100px 60px}
+.res-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;flex-wrap:wrap;gap:20px}
+.res-tabs{display:flex}
+.rt{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 28px;cursor:pointer;border:1px solid rgba(244,240,232,0.15);color:rgba(244,240,232,0.4);background:transparent;font-family:var(--sans);margin-right:-1px;transition:all 0.8s var(--ease)}
+.rt.on{color:var(--branco);border-color:rgba(244,240,232,0.5);background:rgba(244,240,232,0.05);position:relative;z-index:1}
+.rt:hover{color:var(--branco)}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;height:480px}
+.rcard{position:relative;overflow:hidden;cursor:pointer}
+.rcard img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.rcard:hover img{transform:scale(1.06)}
+.rinfo{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(27,36,28,0.92) 0%,transparent 100%)}
+.rt2{font-family:var(--serif);font-size:24px;font-weight:300;margin-bottom:5px}
+.rs{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.55}
+.sec-int{background:#111d14;padding:100px 0}
+.int-head{padding:0 60px;margin-bottom:56px}
+.int-strip{display:flex;gap:3px;overflow-x:auto;padding:0 60px 20px;scrollbar-width:none}
+.int-strip::-webkit-scrollbar{display:none}
+.icard{flex:0 0 360px;height:480px;overflow:hidden;cursor:pointer}
+.icard img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.icard:hover img{transform:scale(1.05)}
+.int-foot{display:flex;justify-content:space-between;align-items:center;padding:40px 60px 0;flex-wrap:wrap;gap:20px}
+.btn-p{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--pedra);color:var(--preto);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all 0.8s var(--ease)}
+.btn-p:hover{background:var(--cobre);color:var(--branco)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:transparent;border:1px solid rgba(244,240,232,0.3);color:var(--branco);font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.8s var(--ease)}
+.btn-o:hover{border-color:var(--pedra);background:rgba(194,174,143,0.07)}
+footer{background:var(--verde);border-top:1px solid rgba(244,240,232,0.1);padding:60px 60px 36px}
+.ft{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px;flex-wrap:wrap;gap:30px}
+.flogo{font-family:var(--serif);font-size:30px;font-weight:300}
+.flinks{display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+.flinks a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,240,232,0.45);text-decoration:none;transition:color 0.3s}
+.flinks a:hover{color:var(--branco)}
+.fb{display:flex;justify-content:space-between;border-top:1px solid rgba(244,240,232,0.1);padding-top:28px;flex-wrap:wrap;gap:10px}
+.fc{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.35}
+@keyframes upIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease)}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){nav{padding:14px 20px}.hero-content{padding:90px 20px 60px}.hero-h1{font-size:clamp(52px,14vw,90px);max-width:100%;text-align:right}.hero-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)}.section-half,.sec-full{grid-template-columns:1fr;display:block}.half-dark{padding:60px 20px}.half-img{height:300px}.full-img{position:relative;width:100%;height:300px}.full-content{margin-left:0;width:100%;padding:60px 20px}.stats{gap:28px}.sec-res{padding:60px 20px}.res-grid{grid-template-columns:1fr;height:auto}.rcard{height:280px}.sec-int{padding:60px 0}.int-head,.int-foot{padding-left:20px;padding-right:20px}.int-strip{padding:0 20px 20px}.icard{flex:0 0 280px;height:360px}footer{padding:40px 20px 24px}.ft{flex-direction:column}.flinks{gap:16px}}
+</style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">FVS</div>
-        <div class="nav-links">
-            <a href="#transformacao">Transformação</a>
-            <a href="#como">Como Funciona</a>
-            <a href="#depoimentos">Depoimentos</a>
-        </div>
-        <button class="cta-nav" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</button>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Viver em Gramado é uma Escolha que Permanece</h1>
-            <p>Imóveis que refletem o conforto de estar nos melhores locais da Serra Gaúcha</p>
-            <button class="cta-nav" onclick="document.getElementById('transformacao').scrollIntoView({behavior:'smooth'})">Descubra a Transformação</button>
-        </div>
-    </section>
+<nav>
+  <div class="nav-left">
+    <div class="nav-menu">
+      <div class="hamburger"><span></span><span></span></div>
+      <span class="nav-txt">Menu</span>
+    </div>
+    <a href="#residencias" class="nav-link">Residências</a>
+  </div>
+  <div class="nav-logo">FVS<sup style="font-size:14px;font-family:var(--sans);letter-spacing:0">®</sup></div>
+  <div class="nav-right">
+    <a href="#contato" class="nav-link">Fale Conosco</a>
+    <span class="nav-heart">♡</span>
+  </div>
+</nav>
 
-    <!-- BEFORE-AFTER SECTION -->
-    <section id="transformacao" class="before-after">
-        <div class="container">
-            <div class="ba-grid">
-                <div class="ba-content">
-                    <h2>A Transformação de Viver em Gramado</h2>
-                    <p>Nós não vendemos imóveis. Nós criamos experiências de vida permanente na Serra Gaúcha. Veja como a FVS transforma espaços em refúgio pessoal.</p>
-                    <button class="cta-primary">Explorar Projetos</button>
-                </div>
+<!-- HERO MOSAICO -->
+<section class="hero">
+  <div class="hero-mosaic">
+    <img class="tall" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1512656371341-6a55d668eaf3?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div>
+      <p class="hero-badge">Residência exclusiva | Serra Gaúcha</p>
+      <p class="hero-desc">Imóveis que refletem o conforto de estar nos melhores locais de Gramado, RS</p>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-scroll" onclick="document.getElementById('wellness').scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+      <h1 class="hero-h1">Esplendor<br>de Renovação</h1>
+    </div>
+  </div>
+</section>
 
-                <div class="slider-wrapper" id="sliderWrapper">
-                    <div class="slider-before">
-                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=900&q=90" alt="Antes">
-                        <span class="slider-label label-before">Espaço Genérico</span>
-                    </div>
-                    <div class="slider-after" id="sliderAfter">
-                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=90" alt="Depois">
-                        <span class="slider-label label-after">Vivência FVS</span>
-                    </div>
-                    <div class="slider-handle" id="sliderHandle">
-                        <div class="slider-arrows">
-                            <span>&lt;</span>
-                            <span>&gt;</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- WELLNESS -->
+<section id="wellness" class="section-half">
+  <div class="half-dark reveal">
+    <span class="bg-word">Wellness</span>
+    <p class="eyebrow">Essência do Autocuidado</p>
+    <h2 class="sec-h2">Wellness</h2>
+    <p class="sec-p">A FVS traz o bem-estar para dentro de casa. Com infraestrutura pensada para relaxamento, rejuvenesce corpo e mente.</p>
+    <div class="tabs">
+      <button class="tab on" onclick="swTab(this,'ws1','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800')">Spa</button>
+      <button class="tab" onclick="swTab(this,'ws2','https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800')">Yoga</button>
+      <button class="tab" onclick="swTab(this,'ws3','https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800')">Fitness</button>
+      <button class="tab" onclick="swTab(this,'ws4','https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800')">Café</button>
+    </div>
+    <div id="ws1" class="tab-pane on"><p class="sec-p" style="margin:0">Deixe seus pensamentos fluírem livremente na nossa piscina spa cristalina com vista para o jardim. Relaxamento total no coração da Serra.</p></div>
+    <div id="ws2" class="tab-pane"><p class="sec-p" style="margin:0">Uma sessão de yoga ao amanhecer entre as montanhas. Equilíbrio de corpo e mente em harmonia com a natureza de Gramado.</p></div>
+    <div id="ws3" class="tab-pane"><p class="sec-p" style="margin:0">Centro de fitness moderno com personal trainer e vista panorâmica. Exercite-se com inspiração a cada movimento.</p></div>
+    <div id="ws4" class="tab-pane"><p class="sec-p" style="margin:0">Café artesanal em ambiente sofisticado. Aromas e sabores únicos para começar o dia com excelência.</p></div>
+  </div>
+  <div class="half-img">
+    <img id="wimg" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85" alt="Wellness FVS" style="transition:opacity 0.5s">
+  </div>
+</section>
 
-    <!-- HOW IT WORKS -->
-    <section id="como" class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>Como a FVS Faz a Diferença</h2>
-                <p>Três pilares que garantem valor permanente e conforto extraordinário</p>
-            </div>
+<!-- NATUREZA -->
+<section class="sec-full" id="natureza" style="background:linear-gradient(135deg,#0d2218 0%,#1a4a2e 45%,#3d7a50 75%,#6aad72 100%)">
+  <img class="full-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85" alt="Natureza Gramado">
+  <span class="full-bg">Nature</span>
+  <div class="full-content reveal">
+    <p class="eyebrow">Leveza do Respirar</p>
+    <h2 class="sec-h2">Natureza</h2>
+    <p class="sec-p">Aqui a natureza se funde com a arquitetura. Curvas dos jardins, silhuetas verdes das fachadas — tudo integrado ao ritmo da vida.</p>
+    <p class="sec-p" style="opacity:0.6;font-size:13px">Terraços paisagísticos com árvores topiárias, emoldurados em vidro, criam a atmosfera de um parque flutuando acima da Serra.</p>
+    <div class="arrows">
+      <button class="arr">&#8592;</button>
+      <button class="arr">&#8594;</button>
+    </div>
+  </div>
+</section>
 
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-icon">
-                        📍
-                        <span class="step-number">1</span>
-                    </div>
-                    <h3>Localização Estratégica</h3>
-                    <p>Projetos em áreas de alto potencial de apreciação na Serra Gaúcha, próximos a atrações e conveniências.</p>
-                </div>
+<!-- LUGAR -->
+<section class="section-half" id="localizacao" style="min-height:80vh">
+  <div class="half-dark reveal">
+    <span class="bg-word">Place</span>
+    <p class="eyebrow">Essência da Contemplação</p>
+    <h2 class="sec-h2">Lugar</h2>
+    <p class="sec-p">Situado no privilegiado distrito de Gramado, cercado por parques e próximo à natureza exuberante da Serra Gaúcha.</p>
+    <div class="stats">
+      <div><span class="stat-n">3</span><span class="stat-l">min a pé<br>ao Parque Natural</span></div>
+      <div><span class="stat-n">9</span><span class="stat-l">min a pé<br>ao centro histórico</span></div>
+      <div><span class="stat-n">20</span><span class="stat-l">min de carro<br>ao aeroporto</span></div>
+    </div>
+  </div>
+  <div class="half-img">
+    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=85" alt="Gramado Serra Gaúcha">
+  </div>
+</section>
 
-                <div class="step-card">
-                    <div class="step-icon">
-                        🏗️
-                        <span class="step-number">2</span>
-                    </div>
-                    <h3>Design Pensado</h3>
-                    <p>Arquitetura refinada que respeita o lugar e promove conforto duradouro para as famílias.</p>
-                </div>
+<!-- DESIGN -->
+<section class="section-half" id="design" style="background:#0f1e12">
+  <div class="half-img">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85" alt="Arquitetura FVS">
+  </div>
+  <div class="half-dark reveal" style="background:#0f1e12">
+    <span class="bg-word">Design</span>
+    <p class="eyebrow">Arquitetura Inspirada</p>
+    <h2 class="sec-h2">Design</h2>
+    <p class="sec-p">Edifício de cristal que se eleva acima das copas. Cada pavimento reflete perspectivas ilimitadas em suas ondas brilhantes.</p>
+    <p class="sec-p" style="font-size:13px;opacity:0.6">Assimetria ousada das varandas em padrão xadrez. Três divisões verticais criam efeito de volume weightless.</p>
+    <a href="#residencias" class="btn-o">Ver Residências &#8594;</a>
+  </div>
+</section>
 
-                <div class="step-card">
-                    <div class="step-icon">
-                        ✓
-                        <span class="step-number">3</span>
-                    </div>
-                    <h3>Confiança Patrimonial</h3>
-                    <p>Mais de 20 anos construindo valor real e permanência para nossos clientes em Gramado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- RESIDÊNCIAS -->
+<section class="sec-res" id="residencias">
+  <div class="res-head">
+    <div>
+      <p class="eyebrow">Coleção de Espaços Premium</p>
+      <h2 class="sec-h2" style="margin:0">Residências</h2>
+    </div>
+    <div class="res-tabs">
+      <button class="rt on" onclick="swRes(this,'rg1')">Apartamentos</button>
+      <button class="rt" onclick="swRes(this,'rg2')">Townhouses</button>
+      <button class="rt" onclick="swRes(this,'rg3')">Coberturas</button>
+    </div>
+  </div>
+  <div id="rg1" class="res-grid">
+    <div class="rcard"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=85" alt=""><div class="rinfo"><p class="rt2">Vista Panorâmica</p><p class="rs">138 apartamentos</p></div></div>
+    <div class="rcard"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=85" alt=""><div class="rinfo"><p class="rt2">Acabamento Designer</p><p class="rs">Pé-direito 3,1m</p></div></div>
+    <div class="rcard"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=85" alt=""><div class="rinfo"><p class="rt2">Turnkey Premium</p><p class="rs">Pronto para morar</p></div></div>
+  </div>
+  <div style="text-align:center;margin-top:56px">
+    <a href="#contato" class="btn-p">Consultar Disponibilidade &#8594;</a>
+  </div>
+</section>
 
-    <!-- TESTIMONIALS -->
-    <section id="depoimentos" class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Mais de 500 Famílias Vivem a Experiência FVS</h2>
-            </div>
+<!-- INTERIORES -->
+<section class="sec-int" id="interiores">
+  <div class="int-head reveal">
+    <p class="eyebrow">Beleza na Essência das Coisas</p>
+    <h2 class="sec-h2">Interiores</h2>
+    <p class="sec-p" style="max-width:560px">Pedra natural, madeira quente, metal envelhecido e têxteis texturizados. Espaços que se tornam história de gerações.</p>
+  </div>
+  <div class="int-strip" id="istrip">
+    <div class="icard"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=85" alt="Interior 1"></div>
+    <div class="icard"><img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=600&q=85" alt="Interior 2"></div>
+    <div class="icard"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=85" alt="Interior 3"></div>
+    <div class="icard"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&q=85" alt="Interior 4"></div>
+    <div class="icard"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=85" alt="Interior 5"></div>
+  </div>
+  <div class="int-foot">
+    <p class="sec-p" style="margin:0;font-size:13px;max-width:440px">Paleta discreta, portais arqueados, curvas suaves. O refinamento como novo luxo.</p>
+    <div style="display:flex;gap:10px">
+      <button class="arr" onclick="document.getElementById('istrip').scrollBy({left:-380,behavior:'smooth'})">&#8592;</button>
+      <button class="arr" onclick="document.getElementById('istrip').scrollBy({left:380,behavior:'smooth'})">&#8594;</button>
+    </div>
+  </div>
+</section>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Encontramos em Gramado o lugar perfeito para viver com permanência e valor."</p>
-                    <div class="testimonial-author">Família Silva</div>
-                    <div class="testimonial-location">Gramado, RS</div>
-                </div>
+<!-- FOOTER -->
+<footer id="contato">
+  <div class="ft">
+    <div><div class="flogo">FVS<sup style="font-size:16px;font-family:var(--sans)">®</sup></div><p style="font-size:11px;opacity:0.4;letter-spacing:2px;margin-top:8px;text-transform:uppercase">Incorporações</p></div>
+    <div class="flinks"><a href="#wellness">Wellness</a><a href="#natureza">Natureza</a><a href="#localizacao">Localização</a><a href="#design">Design</a><a href="#residencias">Residências</a><a href="#interiores">Interiores</a></div>
+    <a href="tel:+555400000000" class="btn-p">Falar com Consultor</a>
+  </div>
+  <div class="fb">
+    <p class="fc">© 2026 FVS Incorporações. Todos os direitos reservados.</p>
+    <p class="fc">Gramado, Serra Gaúcha, RS</p>
+  </div>
+</footer>
 
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"A FVS compreendeu exatamente o que buscávamos: conforto e investimento seguro."</p>
-                    <div class="testimonial-author">Casal Costa</div>
-                    <div class="testimonial-location">Gramado, RS</div>
-                </div>
+<script>
+// Tab Wellness
+function swTab(btn, id, imgSrc) {
+  document.querySelectorAll('.tabs .tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById(id).classList.add('on');
+  const img = document.getElementById('wimg');
+  img.style.opacity='0';
+  setTimeout(()=>{ img.src=imgSrc+'&q=85'; img.style.opacity='0.75'; },300);
+}
 
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Investimento inteligente em localização que cresce em valor a cada ano."</p>
-                    <div class="testimonial-author">Investidor Oliveira</div>
-                    <div class="testimonial-location">Gramado, RS</div>
-                </div>
-            </div>
+// Residências tabs
+function swRes(btn, id) {
+  document.querySelectorAll('.rt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
 
-            <div class="cta-buttons">
-                <button class="cta-primary">Falar com Consultor FVS</button>
-                <button class="cta-secondary">Ver Projetos Disponíveis</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contato">
-        <h3>FVS Incorporações</h3>
-        <p>Construindo o futuro em Gramado, Serra Gaúcha</p>
-        <p style="font-size: 16px; margin-top: 20px; font-weight: 300;">Investir em permanência. Viver com conforto.</p>
-        <div class="footer-bottom">
-            <p>© 2026 FVS. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        let isDragging = false;
-        const sliderWrapper = document.getElementById('sliderWrapper');
-        const sliderHandle = document.getElementById('sliderHandle');
-        const sliderAfter = document.getElementById('sliderAfter');
-
-        function updateSliderPosition(clientX) {
-            const rect = sliderWrapper.getBoundingClientRect();
-            const position = ((clientX - rect.left) / rect.width) * 100;
-            const clampedPosition = Math.max(0, Math.min(100, position));
-            
-            sliderHandle.style.left = clampedPosition + '%';
-            sliderAfter.style.width = clampedPosition + '%';
-        }
-
-        sliderWrapper.addEventListener('mousedown', () => isDragging = true);
-        document.addEventListener('mouseup', () => isDragging = false);
-        sliderWrapper.addEventListener('mousemove', (e) => {
-            if (isDragging) updateSliderPosition(e.clientX);
-        });
-
-        // Touch support
-        sliderWrapper.addEventListener('touchstart', () => isDragging = true);
-        document.addEventListener('touchend', () => isDragging = false);
-        sliderWrapper.addEventListener('touchmove', (e) => {
-            if (isDragging) updateSliderPosition(e.touches[0].clientX);
-        });
-
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+// Scroll reveal
+const ro = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
 </body>
 </html>
