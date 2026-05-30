@@ -8,6 +8,7 @@ export {
   Footer,
   Gallery,
   BeforeAfterSlider,
+  HowItWorksSection,
   Map,
 } from './sections'
 
@@ -17,10 +18,14 @@ export type {
   InputProps,
   TextareaProps,
   SelectProps,
+} from './common'
+
+export type {
   HeroProps,
   PropertyCardProps,
   GalleryProps,
   GalleryItem,
   BeforeAfterSliderProps,
+  HowItWorksProps,
   MapProps,
 } from './sections'

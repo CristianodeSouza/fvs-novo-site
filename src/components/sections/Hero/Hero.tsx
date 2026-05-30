@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { cn } from '@/utils/cn'
-import { Button } from '@/components/common/Button'
 
 export interface HeroProps {
   title: string
@@ -72,15 +71,15 @@ export const Hero = ({
           )}
 
           {/* CTA Button */}
-          <Button
-            variant="primary"
-            size="lg"
-            as="a"
+          <a
             href={ctaHref}
-            className="animate-fade-in-delay"
+            className={cn(
+              'inline-flex items-center justify-center gap-sm rounded-md font-medium transition-colors duration-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-serra px-xl py-lg text-lg h-14 bg-pedra text-preto-quente hover:bg-pedra/90 active:bg-pedra/80 animate-fade-in-delay',
+              'cursor-pointer no-underline'
+            )}
           >
             {ctaText}
-          </Button>
+          </a>
         </div>
       </div>
 

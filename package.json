@@ -2,7 +2,6 @@
   "name": "fvs-novo-site",
   "version": "1.0.0",
   "description": "Novo website para FVS.",
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,7 +15,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/CristianodeSouza/fvs-novo-site/issues"
   },

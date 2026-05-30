@@ -1,9 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { cn } from '@/utils/cn'
-import { Button } from '@/components/common/Button'
 
 export interface PropertyCardProps {
   id: string
@@ -95,15 +93,14 @@ export const PropertyCard = ({
           </p>
         </div>
 
-        <Button
-          as="a"
+        <a
           href={href}
-          variant="secondary"
-          size="sm"
-          fullWidth
+          className={cn(
+            'inline-flex items-center justify-center gap-sm rounded-md font-medium transition-colors duration-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-serra px-lg py-md text-sm h-11 border border-verde-serra text-verde-serra hover:bg-verde-serra/10 active:bg-verde-serra/20 w-full no-underline cursor-pointer'
+          )}
         >
           Ver Detalhes
-        </Button>
+        </a>
       </div>
     </article>
   )

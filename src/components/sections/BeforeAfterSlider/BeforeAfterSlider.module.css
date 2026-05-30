@@ -1,0 +1,114 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  border-radius: var(--radius-card);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.afterOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+  transition: width 0.1s ease-out;
+  z-index: 2;
+}
+
+.labelBefore,
+.labelAfter {
+  position: absolute;
+  bottom: 16px;
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--label-letter-spacing);
+  color: var(--color-off-white);
+  background: rgba(43, 58, 44, 0.6);
+  backdrop-filter: blur(4px);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.labelBefore { left: 16px; }
+.labelAfter  { right: 16px; }
+
+.handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 64px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(194, 174, 143, 0.3),
+    rgba(194, 174, 143, 0.6),
+    rgba(194, 174, 143, 0.3)
+  );
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.2s var(--easing-out);
+}
+
+.handle:hover {
+  width: 80px;
+  background: linear-gradient(
+    to right,
+    rgba(194, 174, 143, 0.4),
+    rgba(194, 174, 143, 0.7),
+    rgba(194, 174, 143, 0.4)
+  );
+}
+
+.handleContent {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--color-off-white);
+  pointer-events: none;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+@media (max-width: 768px) {
+  .container { min-height: 300px; }
+
+  .labelBefore,
+  .labelAfter {
+    font-size: 11px;
+    padding: 6px 12px;
+    bottom: 12px;
+  }
+
+  .labelBefore { left: 12px; }
+  .labelAfter  { right: 12px; }
+  .handle      { width: 50px; }
+  .handle:hover{ width: 60px; }
+  .arrow       { width: 16px; height: 16px; }
+}

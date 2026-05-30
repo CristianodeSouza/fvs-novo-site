@@ -1,0 +1,110 @@
+/*
+ * Animation & Transition Library
+ * Baseado nas transições premium do Springs.estate
+ * Adaptado para a paleta FVS Incorporações
+ * Versão: 1.0
+ */
+
+:root {
+  --easing-springs: cubic-bezier(0.25, 0.74, 0.22, 0.99);
+}
+
+.transition-smooth {
+  transition:
+    color 0.8s var(--easing-springs),
+    background-color 0.8s var(--easing-springs),
+    border-color 0.8s var(--easing-springs),
+    box-shadow 0.8s var(--easing-springs),
+    transform 0.8s var(--easing-springs);
+}
+
+.transition-fast {
+  transition: all 0.15s var(--easing-out);
+}
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+[role="tabpanel"] {
+  animation: fadeIn 0.3s var(--easing-out) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-hover {
+  transition:
+    box-shadow 0.8s var(--easing-springs),
+    transform 0.8s var(--easing-springs);
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.underline-animate::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-pedra);
+  transition: width 0.3s var(--easing-out);
+  margin-top: 4px;
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s var(--easing-out);
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-lazy {
+  opacity: 0;
+  transition: opacity 0.4s var(--easing-out);
+}
+
+.image-lazy.loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
