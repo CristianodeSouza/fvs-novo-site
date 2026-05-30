@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FVS Incorporações - Novo Layout Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-serra: #2B3A2C;
+            --pedra: #C2AE8F;
+            --cobre: #8C6A3F;
+            --off-white: #F4F0E8;
+            --pedra-clara: #DDD0BB;
+            --preto-quente: #1A1A18;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Outfit', sans-serif;
+            --easing: cubic-bezier(0.25, 0.74, 0.22, 0.99);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--preto-quente);
+            background: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: var(--off-white);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(43,58,44,0.08);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--verde-serra);
+            border-right: 3px solid var(--cobre);
+            padding-right: 20px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            color: var(--preto-quente);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s var(--easing);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background: var(--pedra);
+            transition: width 0.3s var(--easing);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            padding: 12px 28px;
+            background: var(--pedra);
+            color: var(--preto-quente);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 0;
+            transition: all 0.3s var(--easing);
+            border: none;
+            cursor: pointer;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cta-nav:hover {
+            background: var(--cobre);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(43,58,44,0.15);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            margin-top: 64px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--verde-serra) 0%, #1a3d2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1512656371341-6a55d668eaf3?w=1440&q=85');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInDown 0.9s var(--easing) forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 48px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* ===== BEFORE-AFTER ===== */
+        .before-after {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--pedra-clara) 100%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .ba-content h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--verde-serra);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .ba-content p {
+            font-size: 16px;
+            color: var(--preto-quente);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 12px 40px rgba(43,58,44,0.15);
+            cursor: col-resize;
+            user-select: none;
+        }
+
+        .slider-before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .slider-before img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-after {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 2;
+            transition: width 0.05s linear;
+        }
+
+        .slider-after img {
+            width: 200%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 70px;
+            height: 100%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(194,174,143,0.25) 0%, rgba(194,174,143,0.6) 50%, rgba(194,174,143,0.25) 100%);
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.2s var(--easing);
+        }
+
+        .slider-handle:hover {
+            width: 90px;
+            background: linear-gradient(90deg, rgba(194,174,143,0.3) 0%, rgba(194,174,143,0.7) 50%, rgba(194,174,143,0.3) 100%);
+        }
+
+        .slider-arrows {
+            display: flex;
+            gap: 6px;
+            color: var(--off-white);
+            font-size: 20px;
+        }
+
+        .slider-label {
+            position: absolute;
+            bottom: 24px;
+            padding: 10px 18px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--off-white);
+            background: rgba(43,58,44,0.65);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+        }
+
+        .label-before {
+            left: 20px;
+        }
+
+        .label-after {
+            right: 20px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 120px 40px;
+            background: var(--off-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--verde-serra);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--preto-quente);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .step-card {
+            text-align: center;
+            animation: slideUp 0.8s var(--easing) forwards;
+            opacity: 0;
+        }
+
+        .step-card:nth-child(1) { animation-delay: 0.1s; }
+        .step-card:nth-child(2) { animation-delay: 0.2s; }
+        .step-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .step-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 32px;
+            border: 2px solid var(--pedra);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+            transition: all 0.4s var(--easing);
+            background: rgba(194,174,143,0.05);
+        }
+
+        .step-card:hover .step-icon {
+            transform: scale(1.15);
+            border-color: var(--cobre);
+            box-shadow: 0 12px 32px rgba(43,58,44,0.12);
+            background: rgba(194,174,143,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 40px;
+            height: 40px;
+            background: var(--verde-serra);
+            color: var(--off-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 16px;
+            border: 2px solid var(--off-white);
+        }
+
+        .step-card h3 {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--verde-serra);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--preto-quente);
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 120px 40px;
+            background: linear-gradient(180deg, var(--off-white) 0%, rgba(221,208,187,0.3) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin: 80px 0 60px;
+        }
+
+        .testimonial-card {
+            padding: 40px;
+            background: var(--off-white);
+            border-top: 3px solid var(--verde-serra);
+            border-radius: 0;
+            transition: all 0.4s var(--easing);
+            box-shadow: 0 4px 12px rgba(43,58,44,0.06);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 16px 40px rgba(43,58,44,0.12);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--verde-serra);
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--preto-quente);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-location {
+            font-size: 12px;
+            color: var(--pedra);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 80px;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 14px 40px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.3s var(--easing);
+            border: none;
+            cursor: pointer;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-primary {
+            background: var(--pedra);
+            color: var(--preto-quente);
+        }
+
+        .cta-primary:hover {
+            background: var(--cobre);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(43,58,44,0.15);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid var(--verde-serra);
+            color: var(--verde-serra);
+        }
+
+        .cta-secondary:hover {
+            border-color: var(--cobre);
+            color: var(--cobre);
+            background: rgba(43,58,44,0.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--verde-serra);
+            color: var(--off-white);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(244,240,232,0.2);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+                padding-right: 12px;
+                border-right: 2px solid var(--cobre);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 52px;
+                height: auto;
+                padding: 80px 20px;
+            }
+
+            .ba-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .slider-wrapper {
+                aspect-ratio: 4 / 3;
+            }
+
+            .before-after,
+            .how-it-works,
+            .testimonials {
+                padding: 60px 20px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-header {
+                margin-bottom: 60px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">FVS</div>
+        <div class="nav-links">
+            <a href="#transformacao">Transformação</a>
+            <a href="#como">Como Funciona</a>
+            <a href="#depoimentos">Depoimentos</a>
+        </div>
+        <button class="cta-nav" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Viver em Gramado é uma Escolha que Permanece</h1>
+            <p>Imóveis que refletem o conforto de estar nos melhores locais da Serra Gaúcha</p>
+            <button class="cta-nav" onclick="document.getElementById('transformacao').scrollIntoView({behavior:'smooth'})">Descubra a Transformação</button>
+        </div>
+    </section>
+
+    <!-- BEFORE-AFTER SECTION -->
+    <section id="transformacao" class="before-after">
+        <div class="container">
+            <div class="ba-grid">
+                <div class="ba-content">
+                    <h2>A Transformação de Viver em Gramado</h2>
+                    <p>Nós não vendemos imóveis. Nós criamos experiências de vida permanente na Serra Gaúcha. Veja como a FVS transforma espaços em refúgio pessoal.</p>
+                    <button class="cta-primary">Explorar Projetos</button>
+                </div>
+
+                <div class="slider-wrapper" id="sliderWrapper">
+                    <div class="slider-before">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=900&q=90" alt="Antes">
+                        <span class="slider-label label-before">Espaço Genérico</span>
+                    </div>
+                    <div class="slider-after" id="sliderAfter">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=90" alt="Depois">
+                        <span class="slider-label label-after">Vivência FVS</span>
+                    </div>
+                    <div class="slider-handle" id="sliderHandle">
+                        <div class="slider-arrows">
+                            <span>&lt;</span>
+                            <span>&gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="como" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como a FVS Faz a Diferença</h2>
+                <p>Três pilares que garantem valor permanente e conforto extraordinário</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        📍
+                        <span class="step-number">1</span>
+                    </div>
+                    <h3>Localização Estratégica</h3>
+                    <p>Projetos em áreas de alto potencial de apreciação na Serra Gaúcha, próximos a atrações e conveniências.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        🏗️
+                        <span class="step-number">2</span>
+                    </div>
+                    <h3>Design Pensado</h3>
+                    <p>Arquitetura refinada que respeita o lugar e promove conforto duradouro para as famílias.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        ✓
+                        <span class="step-number">3</span>
+                    </div>
+                    <h3>Confiança Patrimonial</h3>
+                    <p>Mais de 20 anos construindo valor real e permanência para nossos clientes em Gramado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mais de 500 Famílias Vivem a Experiência FVS</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Encontramos em Gramado o lugar perfeito para viver com permanência e valor."</p>
+                    <div class="testimonial-author">Família Silva</div>
+                    <div class="testimonial-location">Gramado, RS</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"A FVS compreendeu exatamente o que buscávamos: conforto e investimento seguro."</p>
+                    <div class="testimonial-author">Casal Costa</div>
+                    <div class="testimonial-location">Gramado, RS</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Investimento inteligente em localização que cresce em valor a cada ano."</p>
+                    <div class="testimonial-author">Investidor Oliveira</div>
+                    <div class="testimonial-location">Gramado, RS</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <button class="cta-primary">Falar com Consultor FVS</button>
+                <button class="cta-secondary">Ver Projetos Disponíveis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+        <h3>FVS Incorporações</h3>
+        <p>Construindo o futuro em Gramado, Serra Gaúcha</p>
+        <p style="font-size: 16px; margin-top: 20px; font-weight: 300;">Investir em permanência. Viver com conforto.</p>
+        <div class="footer-bottom">
+            <p>© 2026 FVS. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let isDragging = false;
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const sliderHandle = document.getElementById('sliderHandle');
+        const sliderAfter = document.getElementById('sliderAfter');
+
+        function updateSliderPosition(clientX) {
+            const rect = sliderWrapper.getBoundingClientRect();
+            const position = ((clientX - rect.left) / rect.width) * 100;
+            const clampedPosition = Math.max(0, Math.min(100, position));
+            
+            sliderHandle.style.left = clampedPosition + '%';
+            sliderAfter.style.width = clampedPosition + '%';
+        }
+
+        sliderWrapper.addEventListener('mousedown', () => isDragging = true);
+        document.addEventListener('mouseup', () => isDragging = false);
+        sliderWrapper.addEventListener('mousemove', (e) => {
+            if (isDragging) updateSliderPosition(e.clientX);
+        });
+
+        // Touch support
+        sliderWrapper.addEventListener('touchstart', () => isDragging = true);
+        document.addEventListener('touchend', () => isDragging = false);
+        sliderWrapper.addEventListener('touchmove', (e) => {
+            if (isDragging) updateSliderPosition(e.touches[0].clientX);
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
