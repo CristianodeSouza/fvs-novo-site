@@ -1,4 +1,6 @@
-﻿import { EditorialTitle, SectionLabel, ScrollReveal } from '@/components/ui'
+﻿'use client'
+
+import { EditorialTitle, SectionLabel, ScrollReveal } from '@/components/ui'
 
 export const ManifestoSection = () => {
   return (

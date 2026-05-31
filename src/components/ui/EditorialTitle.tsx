@@ -1,15 +1,23 @@
-﻿import React from 'react'
+﻿'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { animationVariants, motionTokens, transitionVariant } from '@/lib/motion-tokens'
 
 interface EditorialTitleProps {
   children: React.ReactNode
   level?: 'h1' | 'h2' | 'h3'
   className?: string
+  animated?: boolean
+  delay?: number
 }
 
 export const EditorialTitle = ({
   children,
   level = 'h2',
   className = '',
+  animated = true,
+  delay = 0,
 }: EditorialTitleProps) => {
   const baseStyles =
     'font-serif font-light text-verde-serra leading-tight tracking-tight'
@@ -21,9 +29,26 @@ export const EditorialTitle = ({
   }
 
   const Component = level as React.ElementType
+  const classes = `${baseStyles} ${sizeStyles[level]} ${className}`
+
+  if (!animated) {
+    return (
+      <Component className={classes}>
+        {children}
+      </Component>
+    )
+  }
+
   return (
-    <Component className={`${baseStyles} ${sizeStyles[level]} ${className}`}>
-      {children}
-    </Component>
+    <motion.div
+      initial={animationVariants.titleEnter.hidden}
+      whileInView={animationVariants.titleEnter.visible}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ ...transitionVariant(motionTokens.durationMedium), delay }}
+    >
+      <Component className={classes}>
+        {children}
+      </Component>
+    </motion.div>
   )
 }

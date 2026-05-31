@@ -1,4 +1,8 @@
-﻿import React from 'react'
+﻿'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { motionTokens, animationVariants } from '@/lib/motion-tokens'
 
 interface PremiumButtonProps {
   children: React.ReactNode
@@ -14,19 +18,22 @@ export const PremiumButton = ({
   className = '',
 }: PremiumButtonProps) => {
   const baseStyles =
-    'px-8 py-4 font-sans font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer'
+    'px-8 py-4 font-sans font-medium uppercase tracking-wider cursor-pointer rounded-sm'
 
   const variantStyles = {
-    primary: 'bg-pedra text-verde-serra hover:bg-pedra-clara',
-    secondary: 'bg-verde-serra text-off-white hover:bg-verde-profundo border border-pedra',
+    primary: 'bg-pedra text-verde-serra',
+    secondary: 'border border-pedra text-pedra bg-transparent',
   }
 
   return (
-    <button
+    <motion.button
       onClick={onClick}
+      whileHover={animationVariants.buttonHover}
+      whileTap={animationVariants.buttonTap}
+      transition={{ duration: motionTokens.durationFast, ease: motionTokens.easePremium }}
       className={`${baseStyles} ${variantStyles[variant]} ${className}`}
     >
       {children}
-    </button>
+    </motion.button>
   )
 }

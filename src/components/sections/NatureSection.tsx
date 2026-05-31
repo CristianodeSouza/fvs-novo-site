@@ -8,7 +8,10 @@ export const NatureSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal>
           <SectionLabel className="text-off-white">Localização</SectionLabel>
-          <EditorialTitle level="h2" className="text-off-white mb-12">
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <EditorialTitle level="h2" className="text-off-white mb-12" animated={false}>
             O Território de Gramado
           </EditorialTitle>
         </ScrollReveal>

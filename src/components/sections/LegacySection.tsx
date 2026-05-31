@@ -27,14 +27,17 @@ export const LegacySection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal>
           <SectionLabel>Confiança e Legado</SectionLabel>
-          <EditorialTitle level="h2" className="mb-12">
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <EditorialTitle level="h2" className="mb-12" animated={false}>
             Construído sobre permanência
           </EditorialTitle>
         </ScrollReveal>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {stats.map((stat, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
+            <ScrollReveal key={i} delay={0.15 + i * 0.1}>
               <div className="text-center">
                 <p className="text-5xl md:text-6xl font-light text-pedra mb-2">
                   {stat.number}
@@ -47,7 +50,7 @@ export const LegacySection = () => {
           ))}
         </div>
 
-        <ScrollReveal delay={0.2}>
+        <ScrollReveal delay={0.3}>
           <div className="max-w-3xl">
             <p className="text-lg md:text-xl text-preto-quente font-light leading-relaxed mb-6">
               FVS é construída sobre três pilares: qualidade inquestionável, transparência total e permanência garantida. Não vendemos imóveis. Vendemos território de confiança.

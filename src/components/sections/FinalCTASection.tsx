@@ -7,7 +7,7 @@ export const FinalCTASection = () => {
     <section className="py-32 md:py-48 bg-verde-serra">
       <div className="max-w-5xl mx-auto px-4 text-center">
         <ScrollReveal>
-          <EditorialTitle level="h2" className="text-off-white mb-8">
+          <EditorialTitle level="h2" className="text-off-white mb-8" animated={false}>
             Seu Território de Confiança Aguarda
           </EditorialTitle>
         </ScrollReveal>

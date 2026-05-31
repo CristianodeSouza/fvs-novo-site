@@ -1,4 +1,6 @@
-﻿import { EditorialTitle, SectionLabel, ScrollReveal, PremiumButton } from '@/components/ui'
+﻿'use client'
+
+import { EditorialTitle, SectionLabel, ScrollReveal, PremiumButton } from '@/components/ui'
 
 export const ResidencesSection = () => {
   const residences = [
@@ -30,7 +32,10 @@ export const ResidencesSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal>
           <SectionLabel>Empreendimentos</SectionLabel>
-          <EditorialTitle level="h2" className="mb-16">
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <EditorialTitle level="h2" className="mb-16" animated={false}>
             Residências Disponíveis
           </EditorialTitle>
         </ScrollReveal>

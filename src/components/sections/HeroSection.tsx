@@ -3,10 +3,11 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { EditorialTitle, PremiumButton } from '@/components/ui'
+import { motionTokens, transitionVariant } from '@/lib/motion-tokens'
 
 export const HeroSection = () => {
   return (
-    <section className="relative w-full h-screen min-h-[100vh] overflow-hidden bg-verde-serra" style={{minHeight: '100vh'}}>
+    <section className="relative w-full h-screen min-h-[100vh] overflow-hidden bg-verde-serra">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -24,32 +25,35 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col items-center justify-center px-4 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 48 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.74, 0.22, 0.99] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={transitionVariant(motionTokens.durationMedium)}
           className="text-center max-w-4xl"
         >
-          <EditorialTitle level="h1" className="text-off-white mb-6">
-            Residências Premium em Gramado
+          <EditorialTitle level="h1" className="text-off-white mb-6" animated={false}>
+            Viver em Gramado é uma escolha que permanece.
           </EditorialTitle>
 
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: motionTokens.ySmall }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.74, 0.22, 0.99] }}
+            transition={{ ...transitionVariant(motionTokens.durationMedium), delay: 0.2 }}
             className="text-lg md:text-xl text-areia mb-8 font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Uma experiência de conforto, permanência e valor patrimonial no coração das montanhas.
+            Residências premium que conjugam conforto permanente com valor patrimonial inquestionável.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ ...transitionVariant(motionTokens.durationMedium), delay: 0.4 }}
             className="flex gap-4 justify-center"
           >
             <PremiumButton variant="primary">
-              Explorar
+              Agendar Visita
+            </PremiumButton>
+            <PremiumButton variant="secondary">
+              Solicitar Informações
             </PremiumButton>
           </motion.div>
         </motion.div>

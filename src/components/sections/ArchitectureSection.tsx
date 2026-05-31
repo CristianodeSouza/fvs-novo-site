@@ -8,13 +8,16 @@ export const ArchitectureSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal>
           <SectionLabel>Design & Construção</SectionLabel>
-          <EditorialTitle level="h2" className="mb-12">
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <EditorialTitle level="h2" className="mb-12" animated={false}>
             Arquitetura que Permanece
           </EditorialTitle>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <ScrollReveal direction="left">
+          <ScrollReveal direction="left" delay={0.15}>
             <ImageFrame
               src="/images/architecture-detail.jpg"
               alt="Detalhe arquitetônico"
@@ -22,7 +25,7 @@ export const ArchitectureSection = () => {
             />
           </ScrollReveal>
 
-          <ScrollReveal direction="right">
+          <ScrollReveal direction="right" delay={0.15}>
             <div>
               <p className="text-lg text-preto-quente font-light leading-relaxed mb-6">
                 Cada residência é concebida com materiais premium e atenção obsessiva aos detalhes construtivos. A arquitetura respeita a paisagem e complementa o território natural.
