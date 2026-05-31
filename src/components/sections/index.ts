@@ -1,14 +1,7 @@
-export { Hero } from './Hero'
-export { PropertyCard } from './PropertyCards'
-export { Footer } from './Footer'
-export { Gallery } from './Gallery'
-export { BeforeAfterSlider } from './BeforeAfterSlider'
-export { HowItWorksSection } from './HowItWorksSection'
-export { Map } from './Map'
-
-export type { HeroProps } from './Hero'
-export type { PropertyCardProps } from './PropertyCards'
-export type { GalleryProps, GalleryItem } from './Gallery'
-export type { BeforeAfterSliderProps } from './BeforeAfterSlider'
-export type { HowItWorksProps } from './HowItWorksSection'
-export type { MapProps } from './Map'
+﻿export { HeroSection } from './HeroSection';
+export { ManifestoSection } from './ManifestoSection';
+export { NatureSection } from './NatureSection';
+export { ArchitectureSection } from './ArchitectureSection';
+export { ResidencesSection } from './ResidencesSection';
+export { LegacySection } from './LegacySection';
+export { FinalCTASection } from './FinalCTASection';

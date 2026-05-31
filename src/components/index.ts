@@ -1,31 +1,16 @@
-// Common components
-export { Button, Input, Textarea, Select, Nav } from './common'
+// Layout components
+export { Header, Footer } from './layout'
+
+// UI components
+export { PremiumButton, EditorialTitle, ImageFrame, ScrollReveal, SectionLabel } from './ui'
 
 // Section components
 export {
-  Hero,
-  PropertyCard,
-  Footer,
-  Gallery,
-  BeforeAfterSlider,
-  HowItWorksSection,
-  Map,
-} from './sections'
-
-// Types
-export type {
-  ButtonProps,
-  InputProps,
-  TextareaProps,
-  SelectProps,
-} from './common'
-
-export type {
-  HeroProps,
-  PropertyCardProps,
-  GalleryProps,
-  GalleryItem,
-  BeforeAfterSliderProps,
-  HowItWorksProps,
-  MapProps,
+  HeroSection,
+  ManifestoSection,
+  NatureSection,
+  ArchitectureSection,
+  ResidencesSection,
+  LegacySection,
+  FinalCTASection,
 } from './sections'

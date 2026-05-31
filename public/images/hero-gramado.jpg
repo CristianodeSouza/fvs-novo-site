@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="810" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B3A2C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D281F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="810" fill="url(#grad)"/>
+  <text x="720" y="385" font-size="48" font-weight="bold" fill="#E8DDC8" text-anchor="middle" font-family="sans-serif">Hero Gramado</text>
+  <text x="720" y="445" font-size="24" fill="#E8DDC8" text-anchor="middle" font-family="sans-serif">1440×810</text>
+</svg>
