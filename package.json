@@ -1,6 +1,7 @@
 {
   "name": "fvs-novo-site",
   "version": "1.0.0",
+  "type": "module",
   "description": "Novo website para FVS.",
   "scripts": {
     "dev": "next dev",
